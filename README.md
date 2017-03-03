@@ -17,7 +17,7 @@ The geolocation information in the code is limited to the city center of Rome an
 How to use it:
 
 
-1) copy all the files on an Apache webserver 
+1) copy all the files on an Apache webserver <br>
 2) run crawler.php 
 3) the crawler will save a folder (./parsed_xml) on the server containing the extrated information (in xml format) about rooms for rent in some areas of Rome
 4) open the xml files and edit the description fields with the GPS coordinates
