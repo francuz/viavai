@@ -1,0 +1,250 @@
+/* ---------------------------------------------------
+AUTHOR          :  	Francesco Amato
+WEBSITE         :   ww.francesco-amato.com
+VERSION         :   1
+DATE            :	Jan 27 2017
+---------------------------------------------------- */
+
+body, html, main {
+  height: 100%;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  width: auto\9; /* ie8 */
+}
+ 
+section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+b { 
+  font-weight:normal;
+  color:#3B6BC2;
+}
+
+.bg-wrap {
+  clip: rect(0, auto, auto, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.bg {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  transform: translateZ(0);
+}
+
+.classWithPad {
+  margin:10px; 
+  padding:10px; 
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+h2.center {
+  font-variant: small-caps;
+  font-family:Georgia;
+  color:white;
+  font-size:4em;
+  line-height: 1.8;
+}
+
+h1.center {
+  font-variant: small-caps;
+  font-family:Georgia;
+  color:white;
+  font-size:1.5em;
+  line-height: 1.8;
+}
+
+h1.small {
+  font-variant: small-caps;
+  color:#466CCA;
+  font-size:2.5em;
+  line-height: 1.8;
+}
+
+h2.small {
+  font-variant:small-caps;
+  font-size:1.5em;
+  color:#3B6BC2;
+  line-height: 1.8;
+}
+
+p.small{
+  text-align: justify;
+  font-family:Georgia;
+  font-size:1em;
+  line-height: 2;
+}
+
+.price .header {
+  background-color: #111;
+  color: white;
+  font-size: 25px;
+}
+
+.price {
+  list-style-type: none;
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.price:hover {
+  box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+}
+
+.price .header {
+  background-color: #111;
+  color: white;
+  font-size: 25px;
+}
+
+.price li {
+  border-bottom: 1px solid #eee;
+  padding: 20px;
+  text-align: center;
+}
+
+.price .grey {
+  background-color: #eee;
+  font-size: 20px;
+}
+
+ /* Slideshow container */
+.slideshow-container {
+  max-width: 90%;
+  float: left;
+  margin: 3%;
+  position: relative;
+}
+
+/* Fading animation */
+.myFade {
+  -webkit-animation-name: myFade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: myFade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes myFade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes myFade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  background-color:black;
+  background: rgba(54, 25, 25, .5); 
+  font-size: 1.3em;
+  padding: 0;
+  text-align: center;
+  font-family:Georgia;
+  font-size:1em;
+  line-height: 2;
+}
+
+/* Next & previous buttons */
+.myPrev, .myNext {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.myNext {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.myPrev:hover, .myNext:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* The dots/bullets/indicators */
+.myDot {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .myDot:hover {
+  background-color: #717171;
+}
+
+.aside {
+  position: absolute;
+  width: 20%;
+  padding: 2%;
+  top: 10%;
+  left: 70%;
+}
+
+#google-maps {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0;
+  overflow: hidden;
+}
+
+.footer-bottom {
+  background: #E3E3E3;
+  border-top: 1px solid #DDDDDD;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.footer-bottom p.pull-left {
+  padding-top: 22px;
+}
+
+.container-table {
+  display: table;
+}
+
+.vertical-center-row {
+  display: table-cell;
+  vertical-align: middle;
+}

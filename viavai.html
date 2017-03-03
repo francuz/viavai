@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<!--
+Author: Francesco Amato
+email: f.amato@gatech.edu
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<head>
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript">
+	
+    
+		    var lat = 41.8965143;
+			var lng = 12.4935099;
+			var zm = 12;
+			
+			// Initialize our Google map
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+						
+			function initialize() 
+			{	
+				// Configure the starting variables for the map
+				var mapOptions = {
+					center: new google.maps.LatLng(lat, lng),
+					zoom: zm,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+
+				// Generate the actual map
+				var map = new google.maps.Map(document.getElementById("google-maps"), mapOptions);
+
+				var marker;
+				var i;
+				var contentString = [];
+				var time;
+				var descr = [];
+				var lat1 = [];
+				var lng1 = [];
+								
+				var request = new XMLHttpRequest();
+				request.open("GET", "./geolocated_xml/centro-storico.xml", false);
+				//request.setRequestHeader("Content-Type", "text/xml");
+				request.send();
+				var xml = request.responseXML;
+				var adds = xml.getElementsByTagName("Add");
+				for(i = 0; i < adds.length; i++) {
+				var title = adds[i].firstChild.textContent;
+				var link = adds[i].childNodes[1].childNodes[0].nodeValue;
+				var price = adds[i].childNodes[2].childNodes[0].nodeValue;
+				descr[i] = adds[i].childNodes[3].childNodes[0].nodeValue;
+				var time = adds[i].childNodes[4].childNodes[0].nodeValue;			
+				
+				var separate = descr[i].split(",");
+				lat1[i] = parseFloat(separate[0]);
+				lng1[i] = parseFloat(separate[1]);
+				
+				
+				contentString[i] = '<a href="' + link + '"><b>' + title + '</b></a><br><p>' + price + '</p><br><p>' + time + '</p>';
+				};
+								
+				var infowindow = new google.maps.InfoWindow({
+					content: contentString
+				});
+				
+				var request = new XMLHttpRequest();
+
+				
+				for (i = 0; i < adds.length; i++) 
+				{
+					// Create a lat/long object readable by Google
+					var myLatlng = new google.maps.LatLng(lat1[i], lng1[i])
+					
+			        // Generate a marker from the lat/long object and add it to the map
+					marker = new google.maps.Marker({
+						position: myLatlng,
+						map: map
+					});
+					
+					google.maps.event.addListener(marker, 'click', (function(marker, i) {
+						return function() {
+						infowindow.setContent(contentString[i]);
+						infowindow.open(map, marker);
+					}
+					})(marker, i));
+					
+				}	
+			}
+		</script>
+	
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="ViaVai - Your Next Home" content="Home Hunting" />
+    <meta name="Keywords" content="Home rental, home hunting, apartment hunting, Rome, Roma, Italy, affitto, camere, appartamenti, Italia/>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="Distribution" content="Global" />
+    <meta name="Author" content="Francesco Amato" />
+    <meta name="Robots" content="index,follow" />
+	
+	<title> ViaVai - Your Next Home</title>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/my.bootstrap.css">
+	<link rel="stylesheet" href="css/myStyle.css" type="text/css" /> 	
+
+</head> 
+<body>
+
+<div class="container">	
+	<h2 class="small"> Places in Rome - Italy </h2>
+	<div class="row">
+		<div class="col-lg-8">
+			<div id="google-maps" style="position: relative; top:0; left:0; width:100% !important;height:100% !important;"></div>
+		</div>
+		
+		<div class="col-lg-4">
+		<h2 class="small"> <b>Login/Insert add ... </b> </h2>
+		</div>
+	</div>
+	<br>
+</div>
+
+
+</body>
+</html>
+
+
